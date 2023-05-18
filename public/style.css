@@ -1,0 +1,28 @@
+h1 {
+    background-color: darkblue;
+    color: white;
+  }
+  ul {
+    background-color: gray;
+  }
+  
+  li a {
+    color: red;
+  }
+  li {
+    color: red;
+  }
+  
+  footer {
+    background-color: darkgoldenrod;
+    color: crimson;
+  }
+  
+  h1:hover(){
+     font-size: 10px;
+  }
+  div{
+    background-color: aqua;
+    color: blue;
+    display: block;
+  }
