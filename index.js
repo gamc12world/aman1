@@ -23,7 +23,7 @@ app.get('/',(req,res)=>{
 app.get('/blogs', (req, res) => {
   BLOG.find().sort({ createdAt: -1 })
     .then(result => {
-      res.render('index', { blogs: `${result}k'nice blog`, title: 'All blogs' });
+      res.render('index', { blogs:result, title: 'All blogs' });
     })
     .catch(err => {
       console.log(err);
@@ -38,6 +38,14 @@ app.post('/blogs',(req,res)=>{
       console.log(er);
     })
 })
+ app.get('/blogs/:id',(req,res)=>{
+   const id=req.params.id
+   BLOG.findById(id).then((Results)=>{
+        res.render('detail',{blogs:Results,title:"blog by id"})
+     }).catch((Err)=>{
+      console.log(Err);
+     })
+ })
 app.get('/create',(req,res)=>{
   res.render('create',{
     title:"creating for blog"
