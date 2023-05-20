@@ -33,3 +33,6 @@ h1 {
  border: 2px solid red;
    border-radius: 8px;
   }
+   .details .ls:hover(){
+    font-size: 40px;
+  } 

@@ -2,9 +2,15 @@
 <%- include("./partials/head.ejs") %>
 <body>
     <div class="details content">
-        <h2><%= blogs.title %></h2>
+        <h2 id="ls"><%= blogs.title %></h2>
         <div class="content">
           <p><%= blogs.body %></p>
+        </div>
+        <div>
+          <div><%=blogs.snippet%></div>
+        </div>
+        <div>
+          <div><%=blogs.subtitle%></div>
         </div>
         <a class="delete" data-doc="<%= blogs._id %>">delete</a>
       </div>
