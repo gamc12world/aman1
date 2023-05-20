@@ -30,4 +30,6 @@ h1 {
   .details{
     background-color: blue;
     color: darkgray;
+ border: 2px solid red;
+   border-radius: 8px;
   }
