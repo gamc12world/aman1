@@ -46,6 +46,17 @@ app.post('/blogs',(req,res)=>{
       console.log(Err);
      })
  })
+ app.delete('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  
+  BLOG.findByIdAndDelete(id)
+    .then(result => {
+      res.json({ redirect: '/blogs' });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 app.get('/create',(req,res)=>{
   res.render('create',{
     title:"creating for blog"
