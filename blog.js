@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const scehema=mongoose.Schema;
 const s=scehema({
     title:{

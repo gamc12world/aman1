@@ -7,8 +7,10 @@
   <div class="details content">
     <h2><%=blogs.title %></h2>
     <div class="content">
-      <p><%=blogs.body %></p>
-    </div>
+      <p><%=blogs.snippet %></p></div>
+      <div class="body"><p><%=blogs.body %></p></div>
+      <div class="subtitle"><p><%=blogs.subtitle %></p></div>
+    
     <a class="delete" data-doc="<%= blogs._id %>">delete</a>
   </div>
 
