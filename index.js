@@ -71,4 +71,3 @@ app.use((req,res)=>{
     title:"404 page"
   })
 })
-app._router(ldsakdj)
