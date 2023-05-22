@@ -16,6 +16,9 @@ const s=scehema({
      subtitle:{
          type:Number,
          required:true
+     },image:{
+        type:Image,
+        required:true
      }
 })
 const Blog=mongoose.model('Blog',s)

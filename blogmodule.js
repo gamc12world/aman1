@@ -1,7 +1,7 @@
 import BLOG from './blog.js'
 import  Router from 'express';
 const Route=Router()
-Route.get('/blogs', (req, res) => {
+Route.get('/', (req, res) => {
     BLOG.find().sort({ createdAt: -1 })
       .then(result => {
         res.render('index', { blogs:result, title: 'All blogs' });
@@ -10,7 +10,7 @@ Route.get('/blogs', (req, res) => {
         console.log(err);
       });
   });
-  Route.post('/blogs',(req,res)=>{
+  Route.post('/',(req,res)=>{
      const blog=new BLOG(req.body)
      console.log(blog);
       blog.save().then((Res)=>{
@@ -19,7 +19,7 @@ Route.get('/blogs', (req, res) => {
         console.log(er);
       })
   })
-   Route.get('/blogs/:id',(req,res)=>{
+   Route.get('/:id',(req,res)=>{
      const id=req.params.id
      BLOG.findById(id).then((Results)=>{
           res.render('detail',{blogs:Results,title:"blog by id"})
@@ -27,7 +27,7 @@ Route.get('/blogs', (req, res) => {
         console.log(Err);
        })
    })
-   Route.delete('/blogs/:id', (req, res) => {
+   Route.delete('/:id', (req, res) => {
     const id = req.params.id;
     BLOG.findByIdAndDelete(id)
       .then(result => {
@@ -37,5 +37,11 @@ Route.get('/blogs', (req, res) => {
         console.log(err);
       });
   });
+  Route.get('/:title',(req,res)=>{
+    const title1=req.params.title
+      BLOG.findBytitle({title:title1}).then((Results)=>{
+        res.render('detail',{blogs:Results,title:"blog by title"})
+      }).catch((err)=>console.log(err))
+  })
 
   export default Route;

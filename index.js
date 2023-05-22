@@ -25,7 +25,7 @@ app.get('/create',(req,res)=>{
     title:"creating for blog"
   })
 })
-app.use(Route)
+app.use('/blogs',Route)
 app.get('/about',(req,res)=>{
   res.render('about',{
     title:"about page"
