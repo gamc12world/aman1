@@ -1,6 +1,6 @@
 import Express from 'express'
 import mongoose from 'mongoose'
-import BLOG from './blog.js'
+import Route from './blogmodule.js'
 const app=Express()
 app.listen(3000)
 const mongo='mongodb+srv://aman1:aman1234@aman.fqrgtjd.mongodb.net/anish?retryWrites=true&w=majority'
@@ -20,47 +20,12 @@ app.get('/',(req,res)=>{
     title:"index page"
   ,blogs})
 })
-app.get('/blogs', (req, res) => {
-  BLOG.find().sort({ createdAt: -1 })
-    .then(result => {
-      res.render('index', { blogs:result, title: 'All blogs' });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-app.post('/blogs',(req,res)=>{
-   const blog=new BLOG(req.body)
-   console.log(blog);
-    blog.save().then((Res)=>{
-     res.redirect('/blogs');
-    }).catch((er)=>{
-      console.log(er);
-    })
-})
- app.get('/blogs/:id',(req,res)=>{
-   const id=req.params.id
-   BLOG.findById(id).then((Results)=>{
-        res.render('detail',{blogs:Results,title:"blog by id"})
-     }).catch((Err)=>{
-      console.log(Err);
-     })
- })
- app.delete('/blogs/:id', (req, res) => {
-  const id = req.params.id;
-  BLOG.findByIdAndDelete(id)
-    .then(result => {
-      res.json({ redirect: '/create' })
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
 app.get('/create',(req,res)=>{
   res.render('create',{
     title:"creating for blog"
   })
 })
+app.use(Route)
 app.get('/about',(req,res)=>{
   res.render('about',{
     title:"about page"
